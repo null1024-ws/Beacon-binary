@@ -1,2 +1,2 @@
 # Beacon-binary
-The repo contains the [Beacon](https://github.com/5hadowblad3/Beacon_artifact) binary extracted from its official docker image. 
+The repo contains the [Beacon](https://github.com/5hadowblad3/Beacon_artifact) binary extracted from its official [docker image](https://hub.docker.com/r/yguoaz/beacon). 
