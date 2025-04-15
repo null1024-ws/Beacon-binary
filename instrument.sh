@@ -34,11 +34,11 @@ export LIBS="$LIBS -l:driver.o -lstdc++"
 (
 	echo "## Get Target"
 
-	# if [[ $TARGET = *sqlite3* ]]; then
-	# 	pushd $TARGET/work
-	# else
-	# 	pushd $TARGET/repo
-	# fi
+	if [[ $TARGET = *sqlite3* ]]; then
+		pushd $TARGET/work
+	else
+		pushd $TARGET/repo
+	fi
 
 	echo "targets"
 	grep -nr MAGMA_LOG | cut -f1,2 -d':' | grep -v ".orig:"  | grep -v "Binary file" > $OUT/cstest.txt
@@ -48,6 +48,7 @@ export LIBS="$LIBS -l:driver.o -lstdc++"
 
 (
 	echo "## Build by Beacon"
+    
     cd "$OUT"
     source "$TARGET/configrc"
     for p in "${PROGRAMS[@]}"; do (
