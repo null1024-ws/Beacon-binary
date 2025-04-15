@@ -47,8 +47,7 @@ export LIBS="$LIBS -l:driver.o -lstdc++"
 )
 
 (
-	echo "## Build by Beacon"
-    
+    echo "## Build by Beacon"
     cd "$OUT"
     source "$TARGET/configrc"
     for p in "${PROGRAMS[@]}"; do (
