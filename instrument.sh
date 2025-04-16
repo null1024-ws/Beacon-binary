@@ -60,16 +60,16 @@ export LIBS="$LIBS -l:driver.o -lstdc++"
 		extract-bc "./$p"
 
 		echo "[+] precondInfer"
-		$FUZZER/precondInfer $p.bc --target-file=../cstest.txt --join-bound=1 > log_precond.txt 2>&1
+		$FUZZER/repo/prototype/precondInfer $p.bc --target-file=../cstest.txt --join-bound=1 > log_precond.txt 2>&1
 		
 		echo "[+] Ins"
-		$FUZZER/Ins -output=$folder/fuzz.bc -afl -res=$folder -log=log_Ins.txt -load=$folder/range_res.txt $folder/transed.bc
+		$FUZZER/repo/prototype/Ins -output=$folder/fuzz.bc -afl -res=$folder -log=log_Ins.txt -load=$folder/range_res.txt $folder/transed.bc
 
 		echo "[+] Compile"
 		export CC=clang; export CXX=clang++;
 		input_bc=$folder/fuzz.bc
 		output_bin=$OUT/$p
-		afl_llvm_rt=$FUZZER/Test/afl-llvm-rt.o
+		afl_llvm_rt=$FUZZER/repo/prototype/afl-llvm-rt.o
 		export BUILD_BC_LIBS="$LIBS -lrt"
 		pushd "$TARGET/repo"
 		if [[ $TARGET = *libpng* ]]; then
