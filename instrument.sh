@@ -60,10 +60,10 @@ export LIBS="$LIBS -l:driver.o -lstdc++"
 		extract-bc "./$p"
 
 		echo "[+] precondInfer"
-		$FUZZER/repo/prototype/precondInfer $p.bc --target-file=../cstest.txt --join-bound=1 > log_precond.txt 2>&1
-		
-		echo "[+] Ins"
-		$FUZZER/repo/prototype/Ins -output=$folder/fuzz.bc -afl -res=$folder -log=log_Ins.txt -load=$folder/range_res.txt $folder/transed.bc
+                $FUZZER/repo/prototype/precondInfer $p.bc --target-file=../cstest.txt --join-bound=5 > log_precond.txt 2>&1
+                
+                echo "[+] Ins"
+                $FUZZER/repo/prototype/Ins -output=$folder/fuzz.bc -blocks=$folder/bbreaches.txt -afl -log=log_Ins.txt -load=$folder/range_res.txt $folder/transed.bc
 
 		echo "[+] Compile"
 		export CC=clang; export CXX=clang++;
