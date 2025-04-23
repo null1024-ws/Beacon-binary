@@ -24,5 +24,5 @@ if [[ $TARGET = *openssl* || $TARGET = *lua* || $TARGET = *libpng* ]]; then
 	FUZZ_TIMEOUT="-t 1000+"
 fi
 
-"$FUZZER/afl-fuzz" -m 100M $FUZZ_TIMEOUT -i "$TARGET/corpus/$PROGRAM" -o "$SHARED/findings" \
+"$FUZZER/repo/prototype/afl-fuzz" -m 100M $FUZZ_TIMEOUT -i "$TARGET/corpus/$PROGRAM" -o "$SHARED/findings" \
     $FUZZARGS -- "$OUT/$PROGRAM" $ARGS 2>&1
